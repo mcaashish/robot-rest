@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: toy-robot
+  labels:
+    app: toy-robot
+spec:
+  template:
+    metadata:
+      name: toy-robot
+      labels:
+        app: toy-robot
+    spec:
+      containers:
+        - name: toy-robot
+          image: toy-robot
+          imagePullPolicy: Never
+  replicas: 2
+  selector:
+    matchLabels:
+      app: toy-robot
+  strategy:
+    type: Recreate
